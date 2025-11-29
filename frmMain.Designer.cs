@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -38,8 +39,8 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pagename = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pagename = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -48,7 +49,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel2.Controls.Add(this.iconButton7);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -60,7 +61,7 @@
             // 
             // iconButton7
             // 
-            this.iconButton7.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.iconButton7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.iconButton7.FlatAppearance.BorderSize = 0;
             this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.BarsStaggered;
@@ -77,17 +78,17 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ainelprojek.Properties.Resources.sandy;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 82);
+            this.pictureBox1.Size = new System.Drawing.Size(109, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel1.Controls.Add(this.iconButton6);
             this.panel1.Controls.Add(this.iconButton5);
             this.panel1.Controls.Add(this.iconButton4);
@@ -102,7 +103,7 @@
             // 
             // iconButton6
             // 
-            this.iconButton6.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.iconButton6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.iconButton6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.SignOut;
@@ -117,10 +118,11 @@
             this.iconButton6.Tag = "signout";
             this.iconButton6.Text = "Sign Out";
             this.iconButton6.UseVisualStyleBackColor = false;
+            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
             // 
             // iconButton5
             // 
-            this.iconButton5.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.iconButton5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.BookBookmark;
@@ -138,7 +140,7 @@
             // 
             // iconButton4
             // 
-            this.iconButton4.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.iconButton4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Info;
@@ -156,7 +158,7 @@
             // 
             // iconButton3
             // 
-            this.iconButton3.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.iconButton3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.iconButton3.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Person;
@@ -175,7 +177,7 @@
             // 
             // iconButton2
             // 
-            this.iconButton2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.iconButton2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.House;
@@ -202,19 +204,6 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(600, 100);
             this.flowLayoutPanel2.TabIndex = 2;
             // 
-            // pagename
-            // 
-            this.pagename.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pagename.AutoSize = true;
-            this.pagename.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagename.Location = new System.Drawing.Point(3, 0);
-            this.pagename.Name = "pagename";
-            this.pagename.Size = new System.Drawing.Size(251, 37);
-            this.pagename.TabIndex = 0;
-            this.pagename.Text = "Data Nilai Siswa";
-            this.pagename.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.pagename.Click += new System.EventHandler(this.label1_Click);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -224,6 +213,20 @@
             this.panel3.Size = new System.Drawing.Size(600, 350);
             this.panel3.TabIndex = 3;
             this.panel3.Tag = "Sign Out";
+            // 
+            // pagename
+            // 
+            this.pagename.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pagename.AutoSize = true;
+            this.pagename.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagename.Location = new System.Drawing.Point(3, 0);
+            this.pagename.Name = "pagename";
+            this.pagename.Padding = new System.Windows.Forms.Padding(0, 25, 0, 0);
+            this.pagename.Size = new System.Drawing.Size(251, 62);
+            this.pagename.TabIndex = 0;
+            this.pagename.Text = "Data Nilai Siswa";
+            this.pagename.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.pagename.Click += new System.EventHandler(this.label1_Click);
             // 
             // frmMain
             // 
@@ -250,7 +253,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Panel panel3;
         private FontAwesome.Sharp.IconButton iconButton6;
         private FontAwesome.Sharp.IconButton iconButton5;
         private FontAwesome.Sharp.IconButton iconButton4;
@@ -258,6 +260,7 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton7;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label pagename;
     }
 }

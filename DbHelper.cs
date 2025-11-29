@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 public static class DbHelper
 {
-    private static readonly string constring = @"Data Source=DESKTOP-IU534U3\SQLEXPRESS;Initial Catalog=SistemDataSiswa_sas;Intergrated Security=True;TrustServerCertificateTrue";
+    private static readonly string constring = @"Data Source=DESKTOP-3C0JNRR;Initial Catalog=SistemDataSiswa_sas;Integrated Security=True;TrustServerCertificate=True"; 
     public static SqlConnection GetConnection()
     {
         SqlConnection conn = new SqlConnection(constring);
@@ -26,7 +26,7 @@ public static class DbHelper
         {
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                SqlDataAdapter da = new SqlDataAdapter();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 return dt;
@@ -38,7 +38,7 @@ public static class DbHelper
         using (SqlConnection conn = GetConnection())
         {
             using (SqlCommand cmd = new SqlCommand(query, conn))
-            {
+            {   
                 return cmd.ExecuteNonQuery();
             }
         }

@@ -25,7 +25,7 @@ namespace ainelprojek
 
             InitializeComponent();
         }
-        private void OpenChildForm(Form ChildForm)
+        private void OpenChildForm(Form ChildForm, string title)
         {
             if (ActiveForm != null)
                 ActiveForm.Close();
@@ -35,19 +35,20 @@ namespace ainelprojek
             ChildForm.TopLevel = false;
             ChildForm.FormBorderStyle = FormBorderStyle.None;
             ChildForm.Dock = DockStyle.Fill;
+            ChildForm.AutoScroll = true;
 
             panel3.Controls.Clear();
             panel3.Controls.Add(ChildForm);
             panel3.Tag = ChildForm;
             ChildForm.BringToFront();
             ChildForm.Show();
-            pagename.Text = ChildForm.Tag != null ?
-                ChildForm.Tag.ToString().ToUpper() : "Form Not Found";
+
+            pagename.Text = title;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            OpenChildForm(new frmDashboard());
+            OpenChildForm(new frmDashboard(),"Dashboard");
         }
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
@@ -61,7 +62,8 @@ namespace ainelprojek
 
         private void iconButton3_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new frmSiswa(),"Siswa"); 
+        
         }
 
         private void iconButton7_Click(object sender, EventArgs e)
@@ -76,7 +78,17 @@ namespace ainelprojek
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmDashboard());
+            OpenChildForm(new frmDashboard(), "Dashboard");
+        }
+
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            frmLogin login = new frmLogin();
+            login.Show();
+
+
+            // Tutup dashboard
+            this.Close();
         }
     }
 }
