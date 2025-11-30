@@ -137,6 +137,7 @@
             this.iconButton5.Tag = "matapelajaran";
             this.iconButton5.Text = "Mata Pelajaran";
             this.iconButton5.UseVisualStyleBackColor = false;
+            this.iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
             // 
             // iconButton4
             // 
@@ -155,6 +156,7 @@
             this.iconButton4.Tag = "nilai";
             this.iconButton4.Text = "Nilai";
             this.iconButton4.UseVisualStyleBackColor = false;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
             // 
             // iconButton3
             // 

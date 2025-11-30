@@ -204,7 +204,13 @@ namespace ainelprojek
                     if (affected > 0)
                     {
                         MessageBox.Show("Data berhasil ditambahkan.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ClearInputs();
+
+                        // clear only the specified textboxes after successful insert
+                        tbNISN.Text = string.Empty;
+                        tbNL.Text = string.Empty;
+                        tbmean.Text = string.Empty;
+                        tbNISN.Focus();
+
                         TampilData();
                         PopulateComboBoxes();
                     }
