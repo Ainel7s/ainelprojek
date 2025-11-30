@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.6.6.0\lib\net48\FontAwesome.Sharp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -53,45 +54,34 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbHelper.cs" />
-    <Compile Include="frmLogin.cs">
+    <Compile Include="bin\form\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
+    <Compile Include="bin\form\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="DbHelper.cs" />
+    <Compile Include="bin\form\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="bin\form\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\frmDashboard.cs">
+    <Compile Include="bin\form\frmSiswa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\frmDashboard.Designer.cs">
-      <DependentUpon>frmDashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmSiswa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSiswa.Designer.cs">
+    <Compile Include="bin\form\frmSiswa.Designer.cs">
       <DependentUpon>frmSiswa.cs</DependentUpon>
     </Compile>
-    <Compile Include="koneksi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="form\frmDashboard.resx">
-      <DependentUpon>frmDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="bin\form\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="bin\form\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSiswa.resx">
+    <EmbeddedResource Include="bin\form\frmSiswa.resx">
       <DependentUpon>frmSiswa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -104,6 +94,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="bin\Debug\ainelprojek.exe.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -120,6 +111,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sandy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\ainelprojek.exe" />
+    <Content Include="bin\Debug\ainelprojek.pdb" />
+    <Content Include="bin\Debug\FontAwesome.Sharp.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
