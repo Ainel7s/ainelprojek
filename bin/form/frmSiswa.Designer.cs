@@ -260,9 +260,8 @@
             // 
             this.tbsearch.Location = new System.Drawing.Point(3, 151);
             this.tbsearch.Name = "tbsearch";
-            this.tbsearch.Size = new System.Drawing.Size(256, 20);
+            this.tbsearch.Size = new System.Drawing.Size(270, 20);
             this.tbsearch.TabIndex = 3;
-            this.tbsearch.Text = "search";
             // 
             // dgv
             // 

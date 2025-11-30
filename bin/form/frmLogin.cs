@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data; // Jangan lupa ini
+using System.Data.SqlClient; // Untuk SqlConnection dan SqlCommand
 
 namespace ainelprojek // Sesuaikan dengan namespace kamu
 {
@@ -20,37 +21,41 @@ namespace ainelprojek // Sesuaikan dengan namespace kamu
                 return;
             }
 
+            string query = "SELECT * FROM Users WHERE username = @user AND password = @pass";
+
             try
             {
-                // 2. Siapkan Query SQL
-                // Ganti 'TabelUser' dengan nama tabel aslimu (misal: users, admin, petugas)
-                string query = string.Format("SELECT * FROM Users WHERE username = '{0}' AND password = '{1}'",
-                                             usn.Text, pw.Text);
-
-                // 3. Panggil DbHelper untuk eksekusi query
-                DataTable dt = DbHelper.ExecuteQuery(query);
-
-                // 4. Cek apakah ada data yang ditemukan (baris > 0)
-                if (dt.Rows.Count > 0)
+                using (SqlConnection conn = DbHelper.GetConnection())
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    MessageBox.Show("Login Berhasil!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cmd.Parameters.AddWithValue("@user", usn.Text.Trim());
+                    cmd.Parameters.AddWithValue("@pass", pw.Text); // consider hashing in future
 
-                    // Buka Form Utama (frmMain)
-                    frmMain mainForm = new frmMain();
-                    mainForm.UserLogin = usn.Text;
-                    mainForm.Show();
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        if (r.HasRows)
+                        {
+                            // login success: read user info or proceed
+                            MessageBox.Show("Login berhasil.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Sembunyikan Form Login
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Username atau Password salah.", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            // Buka Form Utama (frmMain)
+                            frmMain mainForm = new frmMain();
+                            mainForm.UserLogin = usn.Text;
+                            mainForm.Show();
+
+                            // Sembunyikan Form Login
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Username atau Password salah.", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+                MessageBox.Show("Gagal proses login: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -64,6 +69,11 @@ namespace ainelprojek // Sesuaikan dengan namespace kamu
             {
                 pw.UseSystemPasswordChar = true;
             }
+        }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

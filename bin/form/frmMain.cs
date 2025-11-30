@@ -81,7 +81,20 @@ namespace ainelprojek
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-            
+            // close any opened child form and return to dashboard
+            if (ActiveForm != null)
+            {
+                try
+                {
+                    ActiveForm.Close();
+                }
+                catch { /* ignore close errors */ }
+                ActiveForm = null;
+            }
+
+            // clear panel and show dashboard title
+            panel3.Controls.Clear();
+            pagename.Text = "Dashboard";
         }
 
         private void iconButton6_Click(object sender, EventArgs e)

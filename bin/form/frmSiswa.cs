@@ -13,6 +13,7 @@ namespace ainelprojek
         private string idSiswa = "";
         private readonly AutoCompleteStringCollection _searchAutoComplete = new AutoCompleteStringCollection();
         private readonly HashSet<string> _searchHistory = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            private const string SearchPlaceholder = "Search";
 
         public frmSiswa()
         {
@@ -47,12 +48,15 @@ namespace ainelprojek
             btnsrch.Click += Btnsrch_Click;
             dgv.CellClick += Dgv_CellClick;
             tbsearch.KeyDown += Tbsearch_KeyDown;
+            tbsearch.GotFocus += Tbsearch_GotFocus;
+            tbsearch.LostFocus += Tbsearch_LostFocus;
         }
 
         private void FrmSiswa_Load(object sender, EventArgs e)
         {
             TampilData();
             PopulateComboBoxes();
+            InitializeSearchPlaceholder();
         }
 
         private void TampilData()
@@ -173,6 +177,14 @@ namespace ainelprojek
                 return;
             }
 
+            // validate numeric rata-rata before insert (prevents crash when user types non-number)
+            if (!decimal.TryParse(tbmean.Text.Trim(), out decimal rataNilai))
+            {
+                MessageBox.Show("Rata-rata nilai harus berupa angka.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tbmean.Focus();
+                return;
+            }
+
             try
             {
                 using (SqlConnection conn = DbHelper.GetConnection())
@@ -185,7 +197,9 @@ namespace ainelprojek
                     cmd.Parameters.AddWithValue("@kelas", cbkls.Text.Trim());
                     cmd.Parameters.AddWithValue("@jurusan", cbj.Text.Trim());
                     cmd.Parameters.AddWithValue("@nilai_akhlak", cbakh.Text.Trim());
-                    cmd.Parameters.AddWithValue("@rata_nilai", tbmean.Text.Trim());
+                    // use the parsed decimal value for rata_nilai
+                    cmd.Parameters.AddWithValue("@rata_nilai", rataNilai);
+
                     int affected = cmd.ExecuteNonQuery();
                     if (affected > 0)
                     {
@@ -379,7 +393,7 @@ namespace ainelprojek
         private void DoSearch()
         {
             string q = tbsearch.Text.Trim();
-            if (string.IsNullOrEmpty(q))
+            if (string.IsNullOrEmpty(q) || string.Equals(q, SearchPlaceholder, StringComparison.OrdinalIgnoreCase))
             {
                 TampilData();
                 return;
@@ -479,6 +493,33 @@ namespace ainelprojek
         private void btnup_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void InitializeSearchPlaceholder()
+        {
+            if (string.IsNullOrWhiteSpace(tbsearch.Text))
+            {
+                tbsearch.ForeColor = SystemColors.GrayText;
+                tbsearch.Text = SearchPlaceholder;
+            }
+        }
+
+        private void Tbsearch_GotFocus(object sender, EventArgs e)
+        {
+            if (string.Equals(tbsearch.Text, SearchPlaceholder, StringComparison.OrdinalIgnoreCase))
+            {
+                tbsearch.Text = string.Empty;
+                tbsearch.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void Tbsearch_LostFocus(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbsearch.Text))
+            {
+                tbsearch.ForeColor = SystemColors.GrayText;
+                tbsearch.Text = SearchPlaceholder;
+            }
         }
     }
 }
