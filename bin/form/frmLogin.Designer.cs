@@ -120,6 +120,7 @@
             // exit
             // 
             this.exit.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.exit.FlatAppearance.BorderSize = 0;
             this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exit.IconChar = FontAwesome.Sharp.IconChar.X;
             this.exit.IconColor = System.Drawing.Color.Black;
@@ -131,7 +132,6 @@
             this.exit.Size = new System.Drawing.Size(115, 43);
             this.exit.TabIndex = 8;
             this.exit.Tag = "signout";
-            this.exit.Text = "Exit";
             this.exit.UseVisualStyleBackColor = false;
             this.exit.Click += new System.EventHandler(this.exit_Click);
             // 

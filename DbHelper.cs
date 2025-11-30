@@ -4,7 +4,8 @@ using System.Data.SqlClient;
 
 public static class DbHelper
 {
-    private static readonly string constring = @"Data Source=.;Initial Catalog=SistemDataSiswa_sas;Integrated Security=True;TrustServerCertificate=True"; 
+    private static readonly string constring = @"Data Source=.;Initial Catalog=SistemDataSiswa_sas;Integrated Security=True;TrustServerCertificate=True";
+    //gatau sih ka, kalo kaka pake .\SQLEXPRESS tambahin aja yah hehe sy tw knp SSMSnya gamake SQLEXPRESS
     public static SqlConnection GetConnection()
     {
         SqlConnection conn = new SqlConnection(constring);
