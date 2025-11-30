@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 public static class DbHelper
 {
-    private static readonly string constring = @"Data Source=DESKTOP-3C0JNRR;Initial Catalog=SistemDataSiswa_sas;Integrated Security=True;TrustServerCertificate=True"; 
+    private static readonly string constring = @"Data Source=.;Initial Catalog=SistemDataSiswa_sas;Integrated Security=True;TrustServerCertificate=True"; 
     public static SqlConnection GetConnection()
     {
         SqlConnection conn = new SqlConnection(constring);
